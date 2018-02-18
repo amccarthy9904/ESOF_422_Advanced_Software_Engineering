@@ -1,0 +1,55 @@
+model fps
+
+enum Faction {good,evil}
+
+class Character
+	attributes
+		state:State
+		health:Integer
+		ammo:Integer
+		stamina:Integer
+		name:String
+		faction:Faction
+	operations
+		move()
+		shoot()
+		flee()
+		idle()
+		die()
+		interact()
+	end
+
+abstract class State
+	operations
+		move()
+		shoot()
+		flee()
+		idle()
+		die()
+		interact()
+	end
+
+class Neutral < State
+	operations
+
+	end
+
+class Attack  < State
+	operations
+	
+	end
+
+class Dead < State
+	operations
+
+	end
+
+class Panic < State
+	operations
+	
+	end
+
+association playerState between 
+	Character[1] role player
+	State[1] role state 
+end
